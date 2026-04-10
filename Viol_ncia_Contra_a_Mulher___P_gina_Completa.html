@@ -1,0 +1,861 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Violência Contra a Mulher — Informação, Prevenção e Proteção</title>
+  <style>
+    :root {
+      --roxo: #7c3aed;
+      --roxo-claro: #a78bfa;
+      --roxo-escuro: #4c1d95;
+      --rosa: #ec4899;
+      --rosa-claro: #f9a8d4;
+      --rosa-escuro: #be185d;
+      --vermelho: #e11d48;
+      --bg: #0f0a1e;
+      --bg2: #1a0f2e;
+      --bg3: #2d1b4e;
+      --card: #1e1035;
+      --card2: #261445;
+      --text: #f5f3ff;
+      --text2: #c4b5fd;
+      --text3: #a78bfa;
+      --border: #3b1f6e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(15,10,30,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-size: 1.2rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--rosa), var(--roxo-claro));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--text2); text-decoration: none; font-size: 0.85rem;
+      font-weight: 500; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--rosa-claro); }
+    .nav-emergency {
+      background: linear-gradient(135deg, var(--vermelho), #be123c);
+      color: #fff; border: none; padding: .5rem 1.2rem;
+      border-radius: 99px; font-weight: 700; cursor: pointer;
+      font-size: 0.85rem; text-decoration: none;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(225,29,72,.4); }
+      50% { box-shadow: 0 0 0 8px rgba(225,29,72,0); }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      background: radial-gradient(ellipse at 60% 40%, #4c1d95 0%, #1a0f2e 50%, #0f0a1e 100%);
+      padding: 6rem 2rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%237c3aed' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 760px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(124,58,237,.25); border: 1px solid var(--roxo-claro);
+      color: var(--roxo-claro); padding: .4rem 1.2rem;
+      border-radius: 99px; font-size: .8rem; font-weight: 600;
+      margin-bottom: 1.5rem; letter-spacing: .05em;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 900; line-height: 1.15;
+      background: linear-gradient(135deg, #fff 30%, var(--rosa-claro) 70%, var(--roxo-claro));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 1.2rem;
+    }
+    .hero p {
+      font-size: 1.15rem; color: var(--text2); max-width: 560px; margin: 0 auto 2.5rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--rosa), var(--roxo));
+      color: #fff; padding: .85rem 2rem; border-radius: 99px;
+      font-weight: 700; text-decoration: none; font-size: 1rem;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 0 30px rgba(236,72,153,.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(236,72,153,.5); }
+    .btn-outline {
+      background: transparent; border: 2px solid var(--roxo-claro);
+      color: var(--roxo-claro); padding: .85rem 2rem; border-radius: 99px;
+      font-weight: 700; text-decoration: none; font-size: 1rem;
+      transition: all .2s;
+    }
+    .btn-outline:hover { background: var(--roxo-claro); color: var(--bg); }
+
+    .hero-stats {
+      display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 4rem;
+    }
+    .hero-stat {
+      background: rgba(255,255,255,.05); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.2rem 2rem; text-align: center; min-width: 140px;
+    }
+    .hero-stat-num { font-size: 2rem; font-weight: 900; color: var(--rosa-claro); }
+    .hero-stat-label { font-size: .8rem; color: var(--text2); }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-tag {
+      display: inline-block; font-size: .75rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--rosa); background: rgba(236,72,153,.12);
+      border: 1px solid rgba(236,72,153,.3);
+      padding: .35rem 1rem; border-radius: 99px; margin-bottom: .8rem;
+    }
+    .section-header h2 {
+      font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 800;
+      background: linear-gradient(135deg, #fff, var(--text2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .section-header p { color: var(--text2); margin-top: .6rem; max-width: 580px; margin-left: auto; margin-right: auto; }
+
+    /* ===== EMERGENCY BANNER ===== */
+    .emergency-banner {
+      background: linear-gradient(135deg, #7f1d1d, #be123c, #9b1239);
+      border-radius: 20px; padding: 2rem 2.5rem;
+      display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+      border: 1px solid rgba(255,100,100,.3);
+      box-shadow: 0 0 40px rgba(225,29,72,.2);
+    }
+    .emergency-icon { font-size: 3rem; flex-shrink: 0; }
+    .emergency-content h3 { font-size: 1.4rem; font-weight: 800; color: #fff; }
+    .emergency-content p { color: #fca5a5; margin-top: .3rem; }
+    .emergency-numbers { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+    .emergency-num {
+      background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+      border-radius: 12px; padding: .6rem 1.2rem;
+      font-size: 1.5rem; font-weight: 900; color: #fff;
+    }
+    .emergency-num span { display: block; font-size: .65rem; font-weight: 500; color: #fca5a5; }
+
+    /* ===== CARDS GRID ===== */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; }
+
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 1.8rem;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--roxo-claro);
+      box-shadow: 0 8px 32px rgba(124,58,237,.2);
+    }
+    .card-icon { font-size: 2.4rem; margin-bottom: 1rem; display: block; }
+    .card h3 { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: .6rem; }
+    .card p { font-size: .9rem; color: var(--text2); }
+    .card-tag {
+      display: inline-block; font-size: .7rem; font-weight: 700;
+      padding: .25rem .7rem; border-radius: 99px; margin-bottom .8rem;
+    }
+    .tag-rosa { background: rgba(236,72,153,.15); color: var(--rosa); border: 1px solid rgba(236,72,153,.3); }
+    .tag-roxo { background: rgba(124,58,237,.15); color: var(--roxo-claro); border: 1px solid rgba(124,58,237,.3); }
+    .tag-vermelho { background: rgba(225,29,72,.15); color: #fca5a5; border: 1px solid rgba(225,29,72,.3); }
+
+    /* ===== TIPOS SECTION ===== */
+    #tipos { background: var(--bg2); }
+    .tipo-card {
+      background: linear-gradient(135deg, var(--card), var(--card2));
+      border: 1px solid var(--border); border-radius: 20px; padding: 2rem;
+      position: relative; overflow: hidden; transition: all .25s;
+    }
+    .tipo-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    }
+    .tipo-card.fisica::before { background: linear-gradient(90deg, #ef4444, #dc2626); }
+    .tipo-card.psicologica::before { background: linear-gradient(90deg, var(--roxo), var(--roxo-claro)); }
+    .tipo-card.patrimonial::before { background: linear-gradient(90deg, #f59e0b, #d97706); }
+    .tipo-card.moral::before { background: linear-gradient(90deg, var(--rosa), var(--rosa-escuro)); }
+    .tipo-card.sexual::before { background: linear-gradient(90deg, #8b5cf6, #6d28d9); }
+    .tipo-card.digital::before { background: linear-gradient(90deg, #06b6d4, #0891b2); }
+    .tipo-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.3); }
+    .tipo-card .icon { font-size: 2.2rem; margin-bottom: .8rem; }
+    .tipo-card h3 { font-weight: 800; font-size: 1.1rem; margin-bottom: .5rem; }
+    .tipo-card p { font-size: .88rem; color: var(--text2); }
+    .tipo-exemplos { margin-top: .8rem; }
+    .tipo-exemplo {
+      display: inline-block; background: rgba(255,255,255,.06);
+      border: 1px solid var(--border); border-radius: 6px;
+      font-size: .72rem; padding: .2rem .6rem; margin: .2rem .2rem 0 0; color: var(--text2);
+    }
+
+    /* ===== CICLO ===== */
+    #ciclo { background: var(--bg); }
+    .ciclo-container {
+      background: var(--card); border: 1px solid var(--border); border-radius: 24px;
+      padding: 3rem; position: relative;
+    }
+    .ciclo-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; }
+    .ciclo-step {
+      text-align: center; padding: 2rem 1rem; position: relative;
+    }
+    .ciclo-step:not(:last-child)::after {
+      content: '→'; position: absolute; right: -10px; top: 50%; transform: translateY(-50%);
+      font-size: 1.5rem; color: var(--text3);
+    }
+    .ciclo-num {
+      width: 64px; height: 64px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-weight: 900; margin: 0 auto 1rem;
+    }
+    .ciclo-step:nth-child(1) .ciclo-num { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #fff; }
+    .ciclo-step:nth-child(2) .ciclo-num { background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; }
+    .ciclo-step:nth-child(3) .ciclo-num { background: linear-gradient(135deg, var(--roxo), var(--roxo-claro)); color: #fff; }
+    .ciclo-step:nth-child(4) .ciclo-num { background: linear-gradient(135deg, var(--rosa), var(--rosa-escuro)); color: #fff; }
+    .ciclo-step h3 { font-size: 1rem; font-weight: 800; margin-bottom: .4rem; }
+    .ciclo-step p { font-size: .83rem; color: var(--text2); }
+    .ciclo-alert {
+      margin-top: 2.5rem; background: rgba(236,72,153,.1); border: 1px solid rgba(236,72,153,.3);
+      border-radius: 14px; padding: 1.2rem 1.5rem;
+    }
+    .ciclo-alert p { color: var(--rosa-claro); font-size: .9rem; }
+
+    /* ===== LEI ===== */
+    #lei { background: var(--bg2); }
+    .lei-hero {
+      background: linear-gradient(135deg, var(--roxo-escuro), var(--bg3));
+      border: 1px solid var(--border); border-radius: 24px;
+      padding: 3rem; margin-bottom: 2rem;
+      display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;
+    }
+    .lei-hero-icon { font-size: 5rem; flex-shrink: 0; }
+    .lei-hero h3 { font-size: 1.6rem; font-weight: 900; color: var(--rosa-claro); }
+    .lei-hero p { color: var(--text2); margin-top: .5rem; }
+    .lei-hero .lei-numero {
+      display: inline-block; background: rgba(236,72,153,.2);
+      border: 1px solid var(--rosa); color: var(--rosa);
+      padding: .35rem 1rem; border-radius: 99px; font-weight: 700; font-size: .85rem;
+      margin-bottom .6rem;
+    }
+
+    /* ===== PROGRESS BARS ===== */
+    .progress-item { margin-bottom: 1.2rem; }
+    .progress-label { display: flex; justify-content: space-between; margin-bottom: .4rem; font-size: .88rem; }
+    .progress-bar { height: 10px; background: rgba(255,255,255,.08); border-radius: 99px; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 99px; transition: width 1s ease; }
+
+    /* ===== CANAIS ===== */
+    #canais { background: var(--bg); }
+    .canal-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+      padding: 1.8rem; display: flex; gap: 1.2rem; align-items: flex-start;
+      transition: all .25s;
+    }
+    .canal-card:hover { border-color: var(--roxo-claro); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(124,58,237,.2); }
+    .canal-icon {
+      width: 54px; height: 54px; border-radius: 14px; display: flex;
+      align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;
+    }
+    .canal-info h3 { font-size: 1rem; font-weight: 800; margin-bottom: .2rem; }
+    .canal-number { font-size: 1.8rem; font-weight: 900; color: var(--rosa-claro); line-height: 1; }
+    .canal-desc { font-size: .82rem; color: var(--text2); margin-top: .3rem; }
+    .canal-badge {
+      display: inline-block; font-size: .65rem; font-weight: 700;
+      padding: .2rem .6rem; border-radius: 99px; margin-top: .4rem;
+      background: rgba(124,58,237,.2); border: 1px solid rgba(124,58,237,.4); color: var(--roxo-claro);
+    }
+
+    /* ===== COMO DENUNCIAR ===== */
+    #denuncia { background: var(--bg2); }
+    .steps-container { max-width: 760px; margin: 0 auto; }
+    .step-item {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 1.8rem; margin-bottom: 1rem;
+      transition: all .25s; position: relative;
+    }
+    .step-item:hover { border-color: var(--roxo-claro); }
+    .step-num {
+      width: 50px; height: 50px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; font-size: 1.2rem;
+      font-weight: 900; flex-shrink: 0; color: #fff;
+    }
+    .step-num.s1 { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+    .step-num.s2 { background: linear-gradient(135deg, var(--rosa), var(--rosa-escuro)); }
+    .step-num.s3 { background: linear-gradient(135deg, var(--roxo), var(--roxo-claro)); }
+    .step-num.s4 { background: linear-gradient(135deg, #10b981, #059669); }
+    .step-num.s5 { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+    .step-content h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: .4rem; }
+    .step-content p { font-size: .88rem; color: var(--text2); }
+    .step-tip {
+      background: rgba(124,58,237,.12); border: 1px solid rgba(124,58,237,.25);
+      border-radius: 10px; padding: .7rem 1rem; margin-top: .8rem; font-size: .82rem; color: var(--text3);
+    }
+
+    /* ===== MITOS x FATOS ===== */
+    #mitos { background: var(--bg); }
+    .mito-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+      overflow: hidden;
+    }
+    .mito-header {
+      background: rgba(225,29,72,.12); border-bottom: 1px solid rgba(225,29,72,.2);
+      padding: 1rem 1.5rem; display: flex; align-items: center; gap: .7rem;
+    }
+    .mito-header span { font-size: 1.2rem; }
+    .mito-header h3 { font-size: .92rem; font-weight: 700; color: #fca5a5; }
+    .fato-header {
+      background: rgba(16,185,129,.1); border-bottom: 1px solid rgba(16,185,129,.2);
+      padding: 1rem 1.5rem; display: flex; align-items: center; gap: .7rem;
+    }
+    .fato-header h3 { font-size: .92rem; font-weight: 700; color: #6ee7b7; }
+    .mito-body { padding: 1.2rem 1.5rem; font-size: .88rem; color: var(--text2); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bg2); border-top: 1px solid var(--border);
+      text-align: center; padding: 3rem 2rem;
+    }
+    .footer-logo {
+      font-size: 1.5rem; font-weight: 900;
+      background: linear-gradient(135deg, var(--rosa), var(--roxo-claro));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: .5rem;
+    }
+    footer p { color: var(--text2); font-size: .9rem; }
+    .footer-hashtags { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; margin-top: 1.2rem; }
+    .hashtag {
+      background: rgba(124,58,237,.15); border: 1px solid rgba(124,58,237,.3);
+      color: var(--roxo-claro); padding: .3rem .9rem; border-radius: 99px; font-size: .78rem; font-weight: 600;
+    }
+
+    /* ===== SCROLL TO TOP ===== */
+    .scroll-top {
+      position: fixed; bottom: 2rem; right: 2rem;
+      background: linear-gradient(135deg, var(--rosa), var(--roxo));
+      color: #fff; border: none; width: 48px; height: 48px;
+      border-radius: 50%; font-size: 1.2rem; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(236,72,153,.4); transition: transform .2s;
+    }
+    .scroll-top:hover { transform: translateY(-3px); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .ciclo-step::after { display: none; }
+      .ciclo-steps { gap: 1rem; }
+      .lei-hero { flex-direction: column; text-align: center; }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeInUp .6s ease both; }
+    .delay-1 { animation-delay: .1s; }
+    .delay-2 { animation-delay: .2s; }
+    .delay-3 { animation-delay: .3s; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">💜 Violência Não</div>
+  <ul class="nav-links">
+    <li><a href="#tipos">Tipos</a></li>
+    <li><a href="#ciclo">Ciclo</a></li>
+    <li><a href="#lei">Lei</a></li>
+    <li><a href="#canais">Canais</a></li>
+    <li><a href="#denuncia">Denunciar</a></li>
+  </ul>
+  <a href="tel:180" class="nav-emergency">🆘 Ligue 180</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content fade-in">
+    <div class="hero-badge">💜 Informação · Prevenção · Proteção</div>
+    <h1>Violência Contra<br/>a Mulher</h1>
+    <p>Entenda, identifique e saiba como agir. Você não está sozinha — informação salva vidas.</p>
+    <div class="hero-btns">
+      <a href="#denuncia" class="btn-primary">✅ Como Denunciar</a>
+      <a href="#tipos" class="btn-outline">🔎 Conhecer os Tipos</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">1,4mi</div>
+        <div class="hero-stat-label">casos/ano no Brasil</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">4</div>
+        <div class="hero-stat-label">feminicídios por dia</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">76%</div>
+        <div class="hero-stat-label">agressor conhecido</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">+1,6mi</div>
+        <div class="hero-stat-label">atendimentos Ligue 180/ano</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGÊNCIA -->
+<section style="background:var(--bg2); padding: 2.5rem 2rem;">
+  <div class="container">
+    <div class="emergency-banner">
+      <div class="emergency-icon">🚨</div>
+      <div class="emergency-content" style="flex:1">
+        <h3>Está em perigo agora? Peça ajuda imediatamente!</h3>
+        <p>O atendimento é gratuito, sigiloso e funciona 24 horas por dia, 7 dias por semana.</p>
+        <div class="emergency-numbers">
+          <div class="emergency-num">180<span>Central da Mulher</span></div>
+          <div class="emergency-num">190<span>Polícia Militar</span></div>
+          <div class="emergency-num">192<span>SAMU</span></div>
+          <div class="emergency-num">100<span>Direitos Humanos</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPOS -->
+<section id="tipos">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">🔎 Identificação</div>
+      <h2>Tipos de Violência Contra a Mulher</h2>
+      <p>A Lei Maria da Penha reconhece 5 formas oficiais de violência. Conhecê-las é o primeiro passo para combatê-las.</p>
+    </div>
+    <div class="grid-3">
+      <div class="tipo-card fisica">
+        <div class="icon">🤜</div>
+        <span class="card-tag tag-vermelho">Mais reconhecida</span>
+        <h3>Violência Física</h3>
+        <p>Qualquer ação que cause dano à integridade corporal ou à saúde da mulher.</p>
+        <div class="tipo-exemplos">
+          <span class="tipo-exemplo">Tapas e socos</span>
+          <span class="tipo-exemplo">Chutes</span>
+          <span class="tipo-exemplo">Empurrões</span>
+          <span class="tipo-exemplo">Queimaduras</span>
+          <span class="tipo-exemplo">Estrangulamento</span>
+        </div>
+      </div>
+      <div class="tipo-card psicologica">
+        <div class="icon">🧠</div>
+        <span class="card-tag tag-roxo">Mais frequente</span>
+        <h3>Violência Psicológica</h3>
+        <p>Condutas que causam dano emocional, diminuem a autoestima e manipulam a vítima.</p>
+        <div class="tipo-exemplos">
+          <span class="tipo-exemplo">Humilhações</span>
+          <span class="tipo-exemplo">Ameaças</span>
+          <span class="tipo-exemplo">Isolamento</span>
+          <span class="tipo-exemplo">Ciúme extremo</span>
+          <span class="tipo-exemplo">Perseguição</span>
+        </div>
+      </div>
+      <div class="tipo-card patrimonial">
+        <div class="icon">💰</div>
+        <span class="card-tag tag-rosa">Frequentemente ignorada</span>
+        <h3>Violência Patrimonial</h3>
+        <p>Retenção, subtração ou destruição de bens, documentos e recursos da mulher.</p>
+        <div class="tipo-exemplos">
+          <span class="tipo-exemplo">Roubo de salário</span>
+          <span class="tipo-exemplo">Destruição de bens</span>
+          <span class="tipo-exemplo">Privar de trabalho</span>
+          <span class="tipo-exemplo">Reter documentos</span>
+        </div>
+      </div>
+      <div class="tipo-card moral">
+        <div class="icon">🔇</div>
+        <h3>Violência Moral</h3>
+        <p>Condutas que afetam a honra e a imagem da mulher perante a sociedade.</p>
+        <div class="tipo-exemplos">
+          <span class="tipo-exemplo">Calúnia</span>
+          <span class="tipo-exemplo">Difamação</span>
+          <span class="tipo-exemplo">Injúria</span>
+          <span class="tipo-exemplo">Fofocas deliberadas</span>
+        </div>
+      </div>
+      <div class="tipo-card sexual">
+        <div class="icon">🚫</div>
+        <span class="card-tag tag-vermelho">Crime grave</span>
+        <h3>Violência Sexual</h3>
+        <p>Qualquer conduta que constranja a mulher a participar de ato sexual sem consentimento.</p>
+        <div class="tipo-exemplos">
+          <span class="tipo-exemplo">Estupro</span>
+          <span class="tipo-exemplo">Assédio sexual</span>
+          <span class="tipo-exemplo">Importunação</span>
+          <span class="tipo-exemplo">Coerção</span>
+        </div>
+      </div>
+      <div class="tipo-card digital">
+        <div class="icon">📱</div>
+        <span class="card-tag tag-roxo">Lei 14.132/2021</span>
+        <h3>Violência Digital</h3>
+        <p>Crimes praticados online que violam privacidade, honra ou segurança da mulher.</p>
+        <div class="tipo-exemplos">
+          <span class="tipo-exemplo">Revenge porn</span>
+          <span class="tipo-exemplo">Cyberstalking</span>
+          <span class="tipo-exemplo">Deepfakes</span>
+          <span class="tipo-exemplo">Assédio online</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CICLO DA VIOLÊNCIA -->
+<section id="ciclo">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">🔁 Dinâmica</div>
+      <h2>O Ciclo da Violência</h2>
+      <p>Compreender o ciclo é essencial para identificar situações de risco e buscar ajuda antes da escalada.</p>
+    </div>
+    <div class="ciclo-container">
+      <div class="ciclo-steps">
+        <div class="ciclo-step">
+          <div class="ciclo-num">⚡</div>
+          <h3>1. Tensão</h3>
+          <p>Acúmulo de conflitos, irritabilidade crescente, críticas constantes e controle excessivo. A mulher tenta "não provocar".</p>
+        </div>
+        <div class="ciclo-step">
+          <div class="ciclo-num">💥</div>
+          <h3>2. Explosão</h3>
+          <p>Episódio agudo de violência — física, verbal ou sexual. É o momento mais perigoso do ciclo.</p>
+        </div>
+        <div class="ciclo-step">
+          <div class="ciclo-num">🙏</div>
+          <h3>3. Arrependimento</h3>
+          <p>Pedidos de desculpa, promessas de mudança, presentes. O agressor justifica ou minimiza seus atos.</p>
+        </div>
+        <div class="ciclo-step">
+          <div class="ciclo-num">🌸</div>
+          <h3>4. "Lua de Mel"</h3>
+          <p>Período de calma que dá a falsa impressão de melhora. Sem intervenção, o ciclo recomeça com mais intensidade.</p>
+        </div>
+      </div>
+      <div class="ciclo-alert">
+        <p>⚠️ <strong>Importante:</strong> Com o tempo, as fases de lua de mel tendem a diminuir e os episódios de violência ficam mais frequentes e severos. Buscar ajuda o quanto antes é fundamental para a segurança.</p>
+      </div>
+
+      <div style="margin-top:2rem;">
+        <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--text2);">📊 Por que é difícil sair?</h3>
+        <div class="progress-item">
+          <div class="progress-label"><span>Medo de represálias</span><span style="color:var(--rosa)">82%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:82%;background:linear-gradient(90deg,var(--rosa),var(--vermelho))"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label"><span>Dependência financeira</span><span style="color:var(--roxo-claro)">67%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:67%;background:linear-gradient(90deg,var(--roxo),var(--roxo-claro))"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label"><span>Proteção dos filhos</span><span style="color:var(--rosa-claro)">54%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:54%;background:linear-gradient(90deg,var(--rosa-escuro),var(--rosa-claro))"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label"><span>Vergonha/julgamento social</span><span style="color:var(--text3)">49%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:49%;background:linear-gradient(90deg,#6d28d9,#a78bfa)"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEI MARIA DA PENHA -->
+<section id="lei">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">⚖️ Seus Direitos</div>
+      <h2>Lei Maria da Penha</h2>
+      <p>Considerada pela ONU uma das três melhores legislações do mundo no combate à violência doméstica.</p>
+    </div>
+    <div class="lei-hero">
+      <div class="lei-hero-icon">⚖️</div>
+      <div>
+        <div class="lei-numero">Lei nº 11.340 · 7 de agosto de 2006</div>
+        <h3>Uma lei que nasceu da luta de uma mulher</h3>
+        <p>Maria da Penha Maia Fernandes ficou paraplégica após ser baleada pelo marido em 1983. Após 19 anos de luta por justiça e com apoio de organismos internacionais, a lei que leva seu nome foi sancionada para proteger milhões de brasileiras.</p>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-icon">🛡️</span>
+        <h3>Medidas Protetivas de Urgência</h3>
+        <p>O agressor pode ser afastado do lar e proibido de se aproximar ou contatar a vítima. Concedidas pelo juiz em até 48 horas. <strong>Você não precisa de advogado.</strong></p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🏠</span>
+        <h3>Permanência no Lar</h3>
+        <p>A mulher tem direito de permanecer no lar e o agressor deve ser afastado, mesmo que o imóvel seja dele. Seus filhos também são protegidos.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">👶</span>
+        <h3>Guarda e Alimentos</h3>
+        <p>O juiz pode fixar a guarda provisória dos filhos e determinar pagamento de alimentos imediatamente após a denúncia.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔒</span>
+        <h3>Prisão Preventiva</h3>
+        <p>O agressor pode ser preso preventivamente mesmo sem sentença definitiva, quando houver risco comprovado à segurança da vítima.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">⚕️</span>
+        <h3>Atendimento de Saúde</h3>
+        <p>A vítima tem direito ao atendimento no SUS, incluindo assistência psicológica, tratamento de ferimentos e exames.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📋</span>
+        <h3>Sem Pena Alternativa</h3>
+        <p>O agressor não pode substituir a pena por cestas básicas ou multas. A Lei Maria da Penha vedou expressamente esse tipo de punição branda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CANAIS DE AJUDA -->
+<section id="canais">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">📞 Rede de Apoio</div>
+      <h2>Canais de Ajuda e Denúncia</h2>
+      <p>Todos os serviços abaixo são gratuitos. Você não precisa estar na fase aguda para pedir ajuda.</p>
+    </div>
+    <div class="grid-2">
+      <div class="canal-card">
+        <div class="canal-icon" style="background:rgba(225,29,72,.15)">📱</div>
+        <div class="canal-info">
+          <h3>Central de Atendimento à Mulher</h3>
+          <div class="canal-number">180</div>
+          <div class="canal-desc">Denúncias, orientações e encaminhamentos. Atende também casos de tráfico de pessoas.</div>
+          <div class="canal-badge">24h · 7 dias · Gratuito · Sigiloso</div>
+        </div>
+      </div>
+      <div class="canal-card">
+        <div class="canal-icon" style="background:rgba(239,68,68,.15)">🚔</div>
+        <div class="canal-info">
+          <h3>Polícia Militar — Emergências</h3>
+          <div class="canal-number">190</div>
+          <div class="canal-desc">Para situações de perigo imediato. Flagrante e intervenção de emergência.</div>
+          <div class="canal-badge">24h · 7 dias</div>
+        </div>
+      </div>
+      <div class="canal-card">
+        <div class="canal-icon" style="background:rgba(245,158,11,.15)">🚑</div>
+        <div class="canal-info">
+          <h3>SAMU — Emergências Médicas</h3>
+          <div class="canal-number">192</div>
+          <div class="canal-desc">Atendimento médico de urgência para vítimas de violência física.</div>
+          <div class="canal-badge">24h · 7 dias</div>
+        </div>
+      </div>
+      <div class="canal-card">
+        <div class="canal-icon" style="background:rgba(16,185,129,.15)">🌐</div>
+        <div class="canal-info">
+          <h3>Disque Direitos Humanos</h3>
+          <div class="canal-number">100</div>
+          <div class="canal-desc">Violações de direitos humanos. Aceita denúncias anônimas de terceiros.</div>
+          <div class="canal-badge">24h · 7 dias · Anônimo</div>
+        </div>
+      </div>
+      <div class="canal-card">
+        <div class="canal-icon" style="background:rgba(124,58,237,.15)">🏛️</div>
+        <div class="canal-info">
+          <h3>Delegacia Especializada da Mulher (DEAM)</h3>
+          <div class="canal-number">Presencial</div>
+          <div class="canal-desc">Registro de ocorrência especializado, por policiais treinados para atender mulheres em situação de violência.</div>
+          <div class="canal-badge">Dias úteis · Atendimento prioritário</div>
+        </div>
+      </div>
+      <div class="canal-card">
+        <div class="canal-icon" style="background:rgba(6,182,212,.15)">💙</div>
+        <div class="canal-info">
+          <h3>CVV — Centro de Valorização da Vida</h3>
+          <div class="canal-number">188</div>
+          <div class="canal-desc">Apoio emocional e prevenção ao suicídio. Para mulheres em crise ou com pensamentos negativos.</div>
+          <div class="canal-badge">24h · 7 dias · Gratuito</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO DENUNCIAR -->
+<section id="denuncia">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">✅ Passo a Passo</div>
+      <h2>Como Fazer uma Denúncia</h2>
+      <p>Você não precisa ter marcas visíveis. Qualquer forma de violência é crime. Siga estes passos com segurança.</p>
+    </div>
+    <div class="steps-container">
+      <div class="step-item">
+        <div class="step-num s1">1</div>
+        <div class="step-content">
+          <h3>🏃 Coloque-se em Segurança</h3>
+          <p>Se estiver em perigo imediato, saia do local. Leve documentos pessoais (RG, CPF), remédios e itens essenciais. Vá para a casa de familiares, amigos ou uma Casa Abrigo.</p>
+          <div class="step-tip">💡 Planeje sua saída com antecedência se possível. Tenha uma mochila preparada com o essencial.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num s2">2</div>
+        <div class="step-content">
+          <h3>📞 Ligue 180 ou 190</h3>
+          <p>Relate a situação. Os atendentes são capacitados para orientar e encaminhar sua denúncia com sigilo absoluto. Você também pode fazer a denúncia pelo app "Direitos Humanos BR".</p>
+          <div class="step-tip">💡 A ligação é gratuita de qualquer telefone, mesmo sem créditos. O sigilo é garantido por lei.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num s3">3</div>
+        <div class="step-content">
+          <h3>🏛️ Registre o Boletim de Ocorrência</h3>
+          <p>Vá à Delegacia da Mulher (DEAM) ou qualquer delegacia. Leve documentos pessoais. O BO pode ser registrado mesmo sem testemunhas ou marcas visíveis.</p>
+          <div class="step-tip">💡 Guarde prints, áudios, fotos de lesões e mensagens — eles são provas importantes.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num s4">4</div>
+        <div class="step-content">
+          <h3>🛡️ Solicite Medidas Protetivas</h3>
+          <p>Na delegacia ou diretamente ao Ministério Público, peça medidas protetivas de urgência. O juiz decide em até 48 horas. Você não precisa de advogado para isso.</p>
+          <div class="step-tip">💡 As medidas protetivas são gratuitas e de aplicação imediata. Descumpri-las é crime.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num s5">5</div>
+        <div class="step-content">
+          <h3>💜 Busque Apoio Especializado</h3>
+          <p>Procure acompanhamento psicológico no CRAS, CREAS ou CAPS da sua cidade. Para assistência jurídica gratuita, procure a Defensoria Pública.</p>
+          <div class="step-tip">💡 Recuperar-se da violência leva tempo. Apoio psicológico é tão importante quanto a proteção jurídica.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MITOS x FATOS -->
+<section id="mitos" style="background:var(--bg);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">💬 Desconstruindo</div>
+      <h2>Mitos e Fatos</h2>
+      <p>A desinformação protege o agressor. Veja a verdade sobre os principais mitos da violência doméstica.</p>
+    </div>
+    <div class="grid-2">
+      <div class="mito-card">
+        <div class="mito-header">
+          <span>❌</span><h3>MITO: "Roupa provocou o agressor"</h3>
+        </div>
+        <div class="fato-header">
+          <span>✅</span><h3>FATO: Violência não tem justificativa</h3>
+        </div>
+        <div class="mito-body">A maioria das violências ocorre dentro de casa, por pessoas conhecidas, independentemente de como a mulher se veste. A responsabilidade é sempre do agressor.</div>
+      </div>
+      <div class="mito-card">
+        <div class="mito-header">
+          <span>❌</span><h3>MITO: "É assunto de família, não me envolvo"</h3>
+        </div>
+        <div class="fato-header">
+          <span>✅</span><h3>FATO: Violência doméstica é crime público</h3>
+        </div>
+        <div class="mito-body">Qualquer pessoa pode e deve denunciar ao presenciar ou suspeitar de violência. A ação depende de investigação policial, não apenas da vítima.</div>
+      </div>
+      <div class="mito-card">
+        <div class="mito-header">
+          <span>❌</span><h3>MITO: "Ela aguenta porque gosta"</h3>
+        </div>
+        <div class="fato-header">
+          <span>✅</span><h3>FATO: Sair é um processo complexo e perigoso</h3>
+        </div>
+        <div class="mito-body">A maioria das mulheres permanece por medo de represálias, dependência financeira, filhos ou falta de apoio. O momento de separação é o mais arriscado — exige planejamento e suporte.</div>
+      </div>
+      <div class="mito-card">
+        <div class="mito-header">
+          <span>❌</span><h3>MITO: "Só é violência se deixar marca"</h3>
+        </div>
+        <div class="fato-header">
+          <span>✅</span><h3>FATO: A violência psicológica é crime</h3>
+        </div>
+        <div class="mito-body">Humilhações, ameaças, controle e manipulação são formas de violência reconhecidas pela Lei Maria da Penha — mesmo sem nenhuma marca física.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">💜 Violência Não</div>
+  <p>Informação · Prevenção · Proteção · Solidariedade</p>
+  <p style="margin-top:.4rem;font-size:.8rem;color:var(--border)">Conteúdo baseado na Lei nº 11.340/2006 (Lei Maria da Penha) e dados do Fórum Brasileiro de Segurança Pública.</p>
+  <div class="footer-hashtags">
+    <span class="hashtag">#NãoCalada</span>
+    <span class="hashtag">#ElasPorElas</span>
+    <span class="hashtag">#VidasSemViolência</span>
+    <span class="hashtag">#LeiMariadaPenha</span>
+    <span class="hashtag">#Ligue180</span>
+  </div>
+</footer>
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // Intersection Observer para animações
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.style.opacity = '1';
+        el.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.card, .tipo-card, .canal-card, .step-item, .mito-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    observer.observe(el);
+  });
+
+  // Scroll to top visibility
+  const scrollBtn = document.querySelector('.scroll-top');
+  window.addEventListener('scroll', () => {
+    scrollBtn.style.opacity = window.scrollY > 400 ? '1' : '0';
+  });
+  scrollBtn.style.opacity = '0';
+  scrollBtn.style.transition = 'opacity .3s';
+</script>
+</body>
+</html>
